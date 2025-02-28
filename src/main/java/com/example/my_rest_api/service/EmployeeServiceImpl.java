@@ -1,6 +1,6 @@
 package com.example.my_rest_api.service;
 
-import com.example.my_rest_api.model.Employee;
+import com.example.my_rest_api.model.EmployeDetails;
 import com.example.my_rest_api.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,34 +15,34 @@ public class EmployeeServiceImpl implements EmployeeService {
     EmployeeRepository employeeRepository;
 
     @Override
-    public List<Employee> getAllEmployeeById() {
+    public List<EmployeDetails> getAllEmployeeById() {
         return employeeRepository.findAll();
     }
 
     @Override
-    public Employee getEmployeeById(Long id) {
-        return employeeRepository.findById(id).orElse(null);
+    public EmployeDetails getEmployeeById(Long employee_id) {
+        return employeeRepository.findById(employee_id).orElse(null);
     }
 
     @Override
-    public Employee saveEmployee(Employee employee) {
+    public EmployeDetails saveEmployee(EmployeDetails employee) {
         return employeeRepository.save(employee);
     }
 
     @Override
-    public Employee updateEmployeeById(Long id, Employee employee) {
-        Optional<Employee> optionalEmployee = employeeRepository.findById(id);
+    public EmployeDetails updateEmployeeById(Long employee_id, EmployeDetails employee) {
+        Optional<EmployeDetails> optionalEmployee = employeeRepository.findById(employee_id);
         if (optionalEmployee.isPresent()) {
-            Employee updateEmployee = optionalEmployee.get();
+            EmployeDetails updateEmployee = optionalEmployee.get();
             updateEmployee.setUsername(employee.getUsername());
-            updateEmployee.setEmailid(employee.getEmailid());
+            updateEmployee.setEmail_id(employee.getEmail_id());
             return employeeRepository.save(updateEmployee);
         }
         return null;
     }
 
     @Override
-    public void deleteById(Long id) {
-       employeeRepository.deleteById(id);
+    public void deleteById(Long employee_id) {
+       employeeRepository.deleteById(employee_id);
     }
 }

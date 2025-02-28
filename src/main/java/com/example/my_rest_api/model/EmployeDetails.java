@@ -3,19 +3,18 @@ package com.example.my_rest_api.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.boot.autoconfigure.web.WebProperties;
 
 @Entity
-@Table(name = "employedetails")
+@Table(name = "employe_details")
 @Getter
 @Setter
-public class Employee {
+public class EmployeDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    public Long employee_id;
     public String username;
-    public String emailid;
+    public String email_id;
 
 
 }
