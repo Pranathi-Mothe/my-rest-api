@@ -8,8 +8,8 @@ import java.util.List;
 public interface EmployeeService {
 
      List<EmployeDetails> getAllEmployeeById();
-     EmployeDetails getEmployeeById(Long employee_id);
+     EmployeDetails getEmployeeById(Long employeeId);
      EmployeDetails saveEmployee(EmployeDetails employee);
-     EmployeDetails updateEmployeeById(Long employee_id, EmployeDetails employee);
-     void deleteById(Long employee_id);
+     EmployeDetails updateEmployeeById(Long employeeId, EmployeDetails employee);
+     void deleteById(Long employeeId);
 }

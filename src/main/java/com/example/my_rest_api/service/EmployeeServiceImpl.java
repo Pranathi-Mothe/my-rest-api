@@ -20,8 +20,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public EmployeDetails getEmployeeById(Long employee_id) {
-        return employeeRepository.findById(employee_id).orElse(null);
+    public EmployeDetails getEmployeeById(Long employeeId) {
+        return employeeRepository.findById(employeeId).orElse(null);
     }
 
     @Override
@@ -30,19 +30,20 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public EmployeDetails updateEmployeeById(Long employee_id, EmployeDetails employee) {
-        Optional<EmployeDetails> optionalEmployee = employeeRepository.findById(employee_id);
+    public EmployeDetails updateEmployeeById(Long employeeId, EmployeDetails employee) {
+        Optional<EmployeDetails> optionalEmployee = employeeRepository.findById(employeeId);
         if (optionalEmployee.isPresent()) {
             EmployeDetails updateEmployee = optionalEmployee.get();
-            updateEmployee.setUsername(employee.getUsername());
-            updateEmployee.setEmail_id(employee.getEmail_id());
+            updateEmployee.setUserName(employee.getUserName());
+            updateEmployee.setEmailId(employee.getEmailId());
+            updateEmployee.setPhoneNumber(employee.getPhoneNumber());
             return employeeRepository.save(updateEmployee);
         }
         return null;
     }
 
     @Override
-    public void deleteById(Long employee_id) {
-       employeeRepository.deleteById(employee_id);
+    public void deleteById(Long employeeId) {
+       employeeRepository.deleteById(employeeId);
     }
 }
